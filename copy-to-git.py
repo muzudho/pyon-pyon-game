@@ -11,6 +11,7 @@ destination = 'C:/Users/むずでょ/Documents/GitHub/pyon-pyon-game'
 
 def go():
     print('Trace   | Remove.')
+    remove_destination_dir('/doc')
     remove_destination_dir('/src')
     remove_destination_file('/.gitignore')
     remove_destination_file('/Cargo.toml')
@@ -19,6 +20,7 @@ def go():
     remove_destination_file('/README.md')
 
     print('Trace   | Copy.')
+    copy_dir('/doc')
     copy_dir('/src')
     copy_file('/.gitignore')
     copy_file('/Cargo.toml')
