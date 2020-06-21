@@ -85,6 +85,12 @@ impl Board {
             move_, src_sq, dst_sq
         );
 
+        // 合法手チェック☆（＾～＾）
+        // 移動先のマスに駒があってはダメ☆（＾～＾）
+        if let Some(_piece_val) = self.pieces[dst_sq as usize] {
+            _ => panic!("移動先のマスに駒があってはダメだぜ☆（＾～＾） dst_sq={}", dst_sq),
+        }
+
         self.pieces[dst_sq as usize] = self.pieces[src_sq as usize];
         self.pieces[src_sq as usize] = None;
     }
