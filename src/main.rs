@@ -1,7 +1,8 @@
 mod board;
+mod pos;
 mod uxi;
 
-use crate::board::{Board, Piece};
+use crate::board::Board;
 use std;
 
 fn main() {
@@ -20,7 +21,7 @@ fn main() {
 
     println!("Debug   | {} {} {}", line, len, starts);
     if 2 < len && &line[starts..3] == "pos" {
-      pos(&board);
+      board.pos();
     }
   }
 }
@@ -46,36 +47,4 @@ fn receipt_message() -> (String, usize, usize) {
   let starts = 0;
 
   (line, len, starts)
-}
-
-fn pos(board: &Board) {
-  fn p(piece: Option<Piece>) -> String {
-    if let Some(piece_val) = piece {
-      piece_val.to_string()
-    } else {
-      " ".to_string()
-    }
-  };
-
-  // 局面表示
-  println!(
-    "\
-[0 move(s) | Go! ? | 0 repeat(s)]
-
-   +---+---+---+---+---+
- 1 | {} | {} |   | o |   |
-   +---+---+---+---+---+
- 2 | o |   | o |   | o |
-   +---+---+---+---+---+
- 3 |   |   |   |   |   |
-   +---+---+---+---+---+
- 4 | x |   | x |   | x |
-   +---+---+---+---+---+
- 5 |   | x |   | x |   |
-   +---+---+---+---+---+
-     a   b   c   d   e
-",
-    p(board.pieces[11]),
-    p(board.pieces[21])
-  );
 }

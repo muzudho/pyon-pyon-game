@@ -13,7 +13,7 @@
 
 ## Rule 1
 
-![20200514pyon1a1.png](./doc/img/20200514pyon1a1.png)  
+![20200514pyon1a1.png](./img/20200514pyon1a1.png)  
 これが初期配置だぜ☆（＾～＾）  
 
 ## Rule 2
@@ -21,14 +21,14 @@
 
 ### Case 2-1
 
-![20200514pyon1a2.png](./doc/img/20200514pyon1a2.png)  
+![20200514pyon1a2.png](./img/20200514pyon1a2.png)  
 
 奥の段に全駒を置くと、勝ち☆（＾～＾）  
 これは黒勝ちの終了図だな☆（＾～＾）  
 
 ### Case 2-2
 
-![20200514pyon1a3.png](./doc/img/20200514pyon1a3.png)  
+![20200514pyon1a3.png](./img/20200514pyon1a3.png)  
 
 どかないマンには 正面で　オラッ☆！　とやれば　奥にいるのと同じ扱いで勝ちだぜ☆（＾～＾）  
 
@@ -54,13 +54,13 @@
 
 ### Case 3-1
 
-![20200514pyon1a4.png](./doc/img/20200514pyon1a4.png)  
+![20200514pyon1a4.png](./img/20200514pyon1a4.png)  
 
 駒は１種類しかない☆（＾～＾）　将棋の王さんと同じ８方向に１マス動けるが……☆（＾～＾）  
 
 ### Case 3-2
 
-![20200514pyon1a5.png](./doc/img/20200514pyon1a5.png)  
+![20200514pyon1a5.png](./img/20200514pyon1a5.png)  
 
 隣に駒があれば、おまとめしてポンと飛べるぜ☆（＾～＾）連続飛びも可能☆（＾～＾）
 
@@ -81,14 +81,14 @@
 
 ### E1-1. Address
 
-![20200514pyon1a6.png](./doc/img/20200514pyon1a6.png)  
+![20200514pyon1a6.png](./img/20200514pyon1a6.png)  
 
 盤の番地は 左上を原点として、右方向へ小文字で a, b, c...☆（＾～＾）  
 下方向へ 1, 2, 3... でいいだろ☆（＾～＾）  
 
 ### E1-2. Move
 
-![20200514pyon1a7.png](./doc/img/20200514pyon1a7.png)  
+![20200514pyon1a7.png](./img/20200514pyon1a7.png)  
 
 ```plain
 b5c3
@@ -121,7 +121,7 @@ draw
 
 ### E1-3. Startpos
 
-![20200514pyon1a1.png](./doc/img/20200514pyon1a1.png)  
+![20200514pyon1a1.png](./img/20200514pyon1a1.png)  
 
 ```plain
 position startpos
@@ -131,7 +131,7 @@ position startpos
 
 ### E1-4. Pfen
 
-![20200514pyon1a8.png](./doc/img/20200514pyon1a8.png)  
+![20200514pyon1a8.png](./img/20200514pyon1a8.png)  
 
 もし途中局面から始めるなら、
 
@@ -146,7 +146,7 @@ position pfen xxx2/2oo1/5/1xx2/o1oo1 x
 
 ### E1-5. Position and moves
 
-![20200514pyon1a9.png](./doc/img/20200514pyon1a9.png)  
+![20200514pyon1a9.png](./img/20200514pyon1a9.png)  
 
 ```plain
 position startpos moves d5c5 b1d3 c5c1
@@ -244,7 +244,7 @@ undo
 
 もし簡単に作れたのなら、こんな応用もあるぜ☆（＾～＾）  
 
-![20200514pyon1a10b1.png](./doc/img/20200514pyon1a10b1.png)  
+![20200514pyon1a10b1.png](./img/20200514pyon1a10b1.png)  
 
 玉以外の駒をランダム配置して ぴょんぴょん しろだぜ☆（＾～＾）  
 ぴょんぴょんできないときは将棋の駒の動き、ぴょんぴょん する方向は８方向でいい☆（＾～＾）  

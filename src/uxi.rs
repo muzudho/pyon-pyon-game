@@ -59,4 +59,7 @@ impl Board {
 
         board
     }
+
+    /// TODO 指す
+    pub fn do_(&self, move_: &str) {}
 }

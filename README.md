@@ -1,6 +1,6 @@
 # pyon-pyon-game
 
-[ぴょんぴょんゲームのルール](./doc/rule.md)  
+* [ぴょんぴょんゲームのルール](./doc/rule.md)  
 
 ## Run
 
