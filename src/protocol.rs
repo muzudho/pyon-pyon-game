@@ -2,33 +2,48 @@
 use crate::board::{Board, Piece};
 
 impl Board {
-    /// TODO uxi を board に変換したいぜ☆（＾～＾）
-    pub fn from_uxi(uxi: &str) -> Board {
+    /// TODO xfen を board に変換したいぜ☆（＾～＾）
+    pub fn from_xfen(xfen: &str) -> Option<Board> {
+        if !xfen.starts_with("xfen ") {
+            return None;
+        }
+
         let mut board = Board::default();
 
-        let mut i = 11;
-        for ch in uxi.chars() {
+        // 文字数☆（＾～＾）
+        let mut count = -1isize;
+        // 番地☆（＾～＾）
+        let mut addr = 11;
+        // Rust言語では文字列に配列のインデックスを使ったアクセスはできないので、
+        // 一手間かけるぜ☆（＾～＾）
+        for ch in xfen.chars() {
+            // 先にカウントアップ☆（＾～＾）
+            count += 1;
+            if count < "xfen ".len() as isize {
+                // 先頭のキーワードは読み飛ばすぜ☆（＾～＾）
+                continue;
+            }
             match ch {
                 'x' => {
-                    board.pieces[i] = Some(Piece::First);
-                    i += 10;
+                    board.pieces[addr] = Some(Piece::First);
+                    addr += 10;
                 }
                 'o' => {
-                    board.pieces[i] = Some(Piece::Second);
-                    i += 10;
+                    board.pieces[addr] = Some(Piece::Second);
+                    addr += 10;
                 }
-                '1' => i += 10,
-                '2' => i += 20,
-                '3' => i += 30,
-                '4' => i += 40,
-                '5' => i += 50,
-                '/' => i = i % 10 + 11,
+                '1' => addr += 10,
+                '2' => addr += 20,
+                '3' => addr += 30,
+                '4' => addr += 40,
+                '5' => addr += 50,
+                '/' => addr = addr % 10 + 11,
                 ' ' => break,
                 _ => panic!("UXI error: {}", ch),
             }
         }
 
-        board
+        Some(board)
     }
 
     /// TODO 指す

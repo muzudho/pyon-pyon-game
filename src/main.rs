@@ -14,19 +14,22 @@ fn main() {
 `pos` - 局面表示。"
   );
 
-  let mut board = Board::from_uxi("xo1o1/o1o1o/5/x1x1x/1x1x1 x");
+  let xfen = "xfen 1o1o1/o1o1o/5/x1x1x/1x1x1 x";
+  if let Some(mut board) = Board::from_xfen(xfen) {
+    // [Ctrl]+[C] で強制終了
+    loop {
+      let (line, len, starts) = receipt_message();
 
-  // [Ctrl]+[C] で強制終了
-  loop {
-    let (line, len, starts) = receipt_message();
-
-    if 2 < len && &line[starts..3] == "pos" {
-      board.pos();
-    } else if 2 < len && &line[starts..2] == "do" {
-      board.do_(&line[starts + 3..]);
-    } else {
-      println!("Debug   | line={} len={} starts={}", line, len, starts);
+      if 2 < len && &line[starts..3] == "pos" {
+        board.pos();
+      } else if 2 < len && &line[starts..2] == "do" {
+        board.do_(&line[starts + 3..]);
+      } else {
+        println!("Debug   | line={} len={} starts={}", line, len, starts);
+      }
     }
+  } else {
+    panic!(format!("(Err.31)  xfen fail. / {}", xfen))
   }
 }
 
