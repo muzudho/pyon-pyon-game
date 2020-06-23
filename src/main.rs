@@ -1,6 +1,6 @@
 mod board;
-mod pos;
-mod uxi;
+mod protocol;
+mod view;
 
 use crate::board::Board;
 use std;
