@@ -1,8 +1,10 @@
 mod board;
+mod command_line;
 mod protocol;
 mod view;
 
 use crate::board::Board;
+use crate::command_line::CommandLine;
 use std;
 
 fn main() {
@@ -10,7 +12,7 @@ fn main() {
     "ぴょんぴょんゲーム
 
 コマンド:
-`do b53c3` - b5 の駒を c3 へ移動。
+`do b5c3` - b5 の駒を c3 へ移動。
 `pos` - 局面表示。"
   );
 
@@ -18,40 +20,27 @@ fn main() {
   if let Some(mut board) = Board::from_xfen(xfen) {
     // [Ctrl]+[C] で強制終了
     loop {
-      let (line, len, starts) = receipt_message();
+      let mut line: String = String::new();
+      // まず最初に、コマンドライン入力を待機しろだぜ☆（＾～＾）
+      match std::io::stdin().read_line(&mut line) {
+        Ok(_n) => {}
+        Err(e) => panic!(format!("(Err.28)  Failed to read line. / {}", e)),
+      };
 
-      if 2 < len && &line[starts..3] == "pos" {
+      // コマンドライン☆（＾～＾） p は parser の意味で使ってるぜ☆（＾～＾）
+      let mut p = CommandLine::new(&line);
+
+      if p.starts_with("pos") {
         board.pos();
-      } else if 2 < len && &line[starts..2] == "do" {
-        board.do_(&line[starts + 3..]);
+      } else if p.starts_with("do") {
+        p.go_next_to("do ");
+        println!("Debug   | rest=|{}|", p.rest());
+        board.do_(p.rest());
       } else {
-        println!("Debug   | line={} len={} starts={}", line, len, starts);
+        println!("Debug   | Command not found. {:?}", p);
       }
     }
   } else {
     panic!(format!("(Err.31)  xfen fail. / {}", xfen))
   }
-}
-
-fn receipt_message() -> (String, usize, usize) {
-  let mut line: String = String::new();
-
-  // まず最初に、コマンドライン入力を待機しろだぜ☆（＾～＾）
-  match std::io::stdin().read_line(&mut line) {
-    Ok(_n) => {}
-    Err(e) => panic!(format!("(Err.28)  Failed to read line. / {}", e)),
-  };
-
-  // 末尾の改行を除こうぜ☆（＾～＾）
-  // trim すると空白も消えるぜ☆（＾～＾）
-  let line: String = match line.trim().parse() {
-    Ok(n) => n,
-    Err(e) => panic!(format!("(Err.38)  Failed to parse. / {}", e)),
-  };
-
-  // 文字数を調べようぜ☆（＾～＾）
-  let len = line.chars().count();
-  let starts = 0;
-
-  (line, len, starts)
 }
