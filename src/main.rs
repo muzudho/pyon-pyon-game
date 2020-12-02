@@ -18,7 +18,7 @@ fn main() {
 
   let xfen = "xfen 1o1o1/o1o1o/5/x1x1x/1x1x1 x";
   if let Some(mut board) = Board::from_xfen(xfen) {
-    // [Ctrl]+[C] で強制終了
+    // [Ctrl]+[C] でループを終了
     loop {
       let mut line: String = String::new();
       // まず最初に、コマンドライン入力を待機しろだぜ☆（＾～＾）
